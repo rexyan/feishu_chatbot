@@ -1,7 +1,5 @@
 import json
 
-
-from chatbot import ChatBotClientException, openapi_callback
 from chatbot.enums import OpenAPI
 from chatbot.http_client import HttpClient
 
@@ -146,3 +144,15 @@ class ChatBotClient:
             headers={"Authorization": f"Bearer {access_token}", "Content-Type": "application/json; charset=utf-8"}
         )
         return data["data"]["items"]
+
+
+class ChatBotClientException(Exception):
+    pass
+
+
+def openapi_callback(response):
+    response_data = response.json()
+    if response.status_code != 200 or response_data.get("code") != 0:
+        raise ChatBotClientException(
+            f"openapi return error, code: {response_data.get('code')}, msg: {response_data.get('msg')}")
+    return response_data

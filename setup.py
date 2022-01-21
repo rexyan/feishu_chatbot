@@ -1,26 +1,24 @@
 import setuptools
 from setuptools import setup
 import io
-import re
 
-with io.open('README.rst', 'rt', encoding='utf8') as f:
-    readme = f.read()
-
-with io.open('chatbot/__init__.py', 'rt', encoding='utf8') as f:
-    version = re.search(r'__version__ = \'(.*?)\'', f.read()).group(1)
+with io.open('README.md', 'rt', encoding='utf8') as f:
+    long_description = f.read()
 
 setup(
     name='feishu_chatbot',
-    version="1.0.0",
-    install_requires=['voluptuous'],
-
+    version="0.0.3",
+    install_requires=['voluptuous>=0.12.2', 'requests>=2.25.0'],
     url='https://github.com/rexyan/feishu_chatbot',
     license='MIT',
-    author='Rex Yan',
+    author='RexYan',
     author_email='rex_yan@126.com',
     description='feishu chatbot api',
-    long_description=readme,
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     packages=setuptools.find_packages(),
+    platforms=['all'],
+    include_package_data=True,
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         # How mature is this project? Common values are

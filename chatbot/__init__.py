@@ -1,12 +1,14 @@
-__version__ = '1.0.0'
+__version__ = '0.0.1'
 
 
-class ChatBotClientException(Exception):
-    pass
-
-
-def openapi_callback(response):
-    response_data = response.json()
-    if response.status_code != 200 or response_data.get("code") != 0:
-        raise ChatBotClientException(f"openapi return error, code: {response_data.get('code')}, msg: {response_data.get('msg')}")
-    return response_data
+from .client import *
+from .api import *
+from .api.audio import *
+from .api.file import *
+from .api.image import *
+from .api.interactive import *
+from .api.media import *
+from .api.post import *
+from .api.share_chat import *
+from .api.sticker import *
+from .api.text import *

@@ -4,33 +4,41 @@
 
 
 ### 使用示例
-
 **安装**
-
 ```shell
-pip install feishu-chatbot
+pip install -U feishu-chatbot
 ```
 
-**发送音频**
-
+**发送文本**
 ```python
-
+client = ChatBotClient(app_id="xxx", app_secret='xxx')
+user = client.get_user_id_by_email("user_email")
+data = {
+    "msg_type": "text",
+    "content": json.dumps({"text": "测试文本"}),
+    "receive_id": user["open_id"],  # or user["user_id"]
+}
+TextChatBot.set_client(client).set_data(data).build().send()  # receive_id 默认使用 open_id
+TextChatBot.set_client(client).set_receive_id_type("user_id").set_data(data).build().send()  # receive_id 默认使用 user_id
 ```
-
-
-
-**发送文件**
-
-**发送图片**
-
-**发送卡片**
 
 **发送视频**
 
-**发送富文本**
+```python
+client = ChatBotClient(app_id="xxx", app_secret='xxx')
+user = client.get_user_id_by_email("user_email")
 
-**发送名片**
+# 上传图片和文件获取对应的 key 信息
+image_key = client.get_image_key("...")
+file_key = client.get_file_key("...")
 
-**发送表情包**
+data = {
+    "msg_type": "media",
+    "content": json.dumps({"file_key": file_key, "image_key": image_key}),
+    "receive_id": user["open_id"],
+}
+MediaChatBot.set_client(client).set_data(data).build().send()
+```
 
-**发送文本**
+
+
