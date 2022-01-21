@@ -1,19 +1,36 @@
-#### 飞书机器人接口
-封装飞书机器人接口
+### 简介
+基于[飞书官方文档](https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/im-v1/message/create_json#5d353271)，封装的飞书消息机器人接口。支持简单的消息格式校验，获取发送消息所需 file_key, image_key 等。
 
-#### 支持机器人类型
-1. 音频
-2. 文件
-3. 图片
-4. 卡片
-5. 视频
-6. 富文本
-7. 名片
-8. 表情包
-9. 文本
 
-#### 使用示例
-安装
-```text
-pip install feishu_chatbot
+
+### 使用示例
+
+**安装**
+
+```shell
+pip install feishu-chatbot
 ```
+
+**发送音频**
+
+```python
+
+```
+
+
+
+**发送文件**
+
+**发送图片**
+
+**发送卡片**
+
+**发送视频**
+
+**发送富文本**
+
+**发送名片**
+
+**发送表情包**
+
+**发送文本**
