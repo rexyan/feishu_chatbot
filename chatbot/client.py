@@ -1,6 +1,5 @@
 import json
 
-import requests
 
 from chatbot import ChatBotClientException, openapi_callback
 from chatbot.enums import OpenAPI
