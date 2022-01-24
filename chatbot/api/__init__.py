@@ -35,11 +35,9 @@ class Builder(type):
         return self
 
     def set_data(self, data):
-        # 转换 data 中 content 类型为 dict, 方便进行字段校验
-        copy_data = copy.deepcopy(data)
-        copy_data["content"] = json.loads(copy_data["content"])
-        if not self._check_message_struct(copy_data):
+        if not self._check_message_struct(data):
             raise ChatBotException("message struct error!")
+        data["content"] = json.dumps(data["content"])
         self.data = data
         return self
 
