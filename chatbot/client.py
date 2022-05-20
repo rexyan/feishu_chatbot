@@ -145,6 +145,20 @@ class ChatBotClient:
         )
         return data["data"]["items"]
 
+    def reply_message(self, message_id: str, content: dict, msg_type: str):
+        """
+        消息回复
+        :return:
+        """
+        access_token = self._get_access_token()
+        data = self.client.post(
+            OpenAPI.REPLY_MESSAGE.value.format(message_id=message_id),
+            data={"content": json.dumps(content), "msg_type": msg_type},
+            response_data_extractor=openapi_callback,
+            headers={"Authorization": f"Bearer {access_token}", "Content-Type": "application/json; charset=utf-8"}
+        )
+        return data["data"]
+
 
 class ChatBotClientException(Exception):
     pass

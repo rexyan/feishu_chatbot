@@ -7,7 +7,7 @@ with io.open('README.md', 'rt', encoding='utf8') as f:
 
 setup(
     name='feishu_chatbot',
-    version="0.0.3",
+    version="0.0.5",
     install_requires=['voluptuous>=0.12.2', 'requests>=2.25.0'],
     url='https://github.com/rexyan/feishu_chatbot',
     license='MIT',
